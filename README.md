@@ -1,4 +1,4 @@
-📺 Netflix-Like Video Streaming App
+# 📺 Netflix-Like Video Streaming App
 A Dockerized Netflix-like video streaming application with React (Frontend), Node.js/Express (Backend), MongoDB (Database), and NGINX (Reverse Proxy).
 
 ## 🚀 Features
