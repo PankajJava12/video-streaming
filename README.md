@@ -15,6 +15,9 @@ A Dockerized Netflix-like video streaming application with React (Frontend), Nod
 
 ## Architecture Diagram
 
+![image](https://github.com/user-attachments/assets/701680b5-8024-4f90-b29e-6e8f23d6933e)
+
+
 ## 🛠️ Technologies Used
 
 - **Frontend**: React.js, HTML, CSS  
