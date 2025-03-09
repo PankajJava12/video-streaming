@@ -3,15 +3,15 @@ A Dockerized Netflix-like video streaming application with React (Frontend), Nod
 
 ## 🚀 Features
 
-✅ User-friendly Interface for browsing & streaming videos
+✅ User-friendly Interface for browsing & streaming videos (Basic browsing, TODO: Enhancements)
 
-✅ Video Upload & Storage using MongoDB
+✅ Video Upload & Storage using MongoDB (TODO: Video upload)
 
 ✅ Video Streaming with backend API
 
 ✅ Dockerized Setup for easy deployment
 
-✅ NGINX as a Reverse Proxy for better performance
+✅ NGINX as a Reverse Proxy for better performance (TODO: TBD)
 
 ## 🛠️ Technologies Used
 
@@ -41,6 +41,52 @@ NetflixLike/
 │── README.md           # Project Documentation
 ```
 
+## 📌 High-Level Design (HLD)
+1️⃣ Architecture Overview
+The application follows a microservices-based approach (Since it is in intial phase, backend is monolith as it uses meta data and streaming), where different components handle distinct functionalities:
+
+- Frontend (React.js): User Interface for browsing and streaming videos.
+- Backend (Node.js, Express): Handles API requests, video storage, and streaming.
+- Database (MongoDB): Stores video metadata and user details.
+- NGINX: Acts as a reverse proxy to manage API routing and serve frontend content.
+- Docker & Docker Compose: Containers for deployment.
+
+2️⃣ System Components
+
+1. User Interface (Frontend)
+
+    - Built with React.js.
+    - Fetches video metadata from the backend.
+    - Streams video via an embedded player.
+    -  Backend API (Node.js & Express)
+
+2. Backend API (Node.js & Express)
+    - Provides REST API endpoints for:
+        - Fetching video metadata.
+        - Uploading videos. (WIP)
+        - Streaming videos.
+        - Interacts with MongoDB for storing video information.
+        - Database (MongoDB)
+
+3. Database (MongoDB)
+ - Stores video metadata like title, description, filename, etc.
+ - Stores user information (future enhancement).
+ - Video Storage
+
+4. Video Storage
+
+ - Initially, video files are stored on the server.
+ - Future enhancement: Integration with cloud storage (AWS S3, Google Cloud Storage, etc.).
+ - Reverse Proxy (NGINX)
+
+5. Reverse Proxy (NGINX)
+ - Routes frontend and API requests efficiently.
+ - Improves security and performance.
+ - Containerization & Deployment
+
+6. Containerization & Deployment
+ - Uses Docker Compose to run all services.
+ - Each component runs in its own container.
 
 ## ⚡ Quick Start
 1️⃣ Clone the Repository
