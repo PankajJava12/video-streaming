@@ -1,25 +1,29 @@
 📺 Netflix-Like Video Streaming App
 A Dockerized Netflix-like video streaming application with React (Frontend), Node.js/Express (Backend), MongoDB (Database), and NGINX (Reverse Proxy).
 
-🚀 Features
+## 🚀 Features
+
 ✅ User-friendly Interface for browsing & streaming videos
+
 ✅ Video Upload & Storage using MongoDB
+
 ✅ Video Streaming with backend API
+
 ✅ Dockerized Setup for easy deployment
+
 ✅ NGINX as a Reverse Proxy for better performance
 
-🛠️ Tech Stack
-Component	Technology
-Frontend	React
-Backend	Node.js, Express, MongoDB
-Database	MongoDB
-Proxy	NGINX
-Containerization	Docker, Docker Compose
+## 🛠️ Technologies Used
+
+- **Frontend**: React.js, HTML, CSS  
+- **Backend**: Node.js, Express.js  
+- **Database**: MongoDB (stores video metadata)  
+- **Reverse Proxy**: Nginx  
+- **Containerization**: Docker & Docker Compose  
 
 
-📂 Project Structure
-csharp
-
+## 📂 Project Structure
+```
 NetflixLike/
 │── backend/            # Express.js Backend API
 │   ├── server.js       # Main Backend Server
@@ -35,54 +39,79 @@ NetflixLike/
 │── init-mongo.js       # Initial MongoDB Data
 │── docker-compose.yml  # Docker Compose Config
 │── README.md           # Project Documentation
-⚡ Quick Start
-1️⃣ Clone the Repository
-bash
+```
 
+
+## ⚡ Quick Start
+1️⃣ Clone the Repository
+```
 git clone https://github.com/yourusername/netflix-like.git
 cd netflix-like
+```
+
 2️⃣ Start the Application
-bash
-
+```
 docker-compose up --build -d
+```
+
 3️⃣ Open in Browser
+
 Frontend → http://localhost:3000
+
 Backend API → http://localhost:5001
+
 NGINX Proxy → http://localhost
-⚙️ API Endpoints
-Method	Endpoint	Description
+
+
+
+## ⚙️ API Endpoints
+
 GET	/videos	Fetch all videos
+
 GET	/video/:filename	Stream video
-POST	/upload	Upload new video
-🐳 Docker Setup
+
+POST	/upload	Upload new video (WIP)
+
+## 🐳 Docker Setup
 🔹 Build & Run Containers
-bash
-
+```
 docker-compose up --build -d
+```
 🔹 Stop Containers
-bash
-
+```
 docker-compose down
-🔹 Check Running Containers
-bash
+```
 
+🔹 Check Running Containers
+```
 docker ps
+```
+
 📡 MongoDB Setup
 Connect to MongoDB from Local
-bash
+```
+mongo --host localhost --port 27017
+```
 
-mongo --host localhost --port 27017 -u root -p example --authenticationDatabase admin
 Check Existing Data
-bash
-
-use netflixDB
+```
+use netflix
 db.videos.find().pretty()
-🌟 Future Enhancements
+```
+
+## 🌟 Future Enhancements
+
 ✅ User authentication (Login/Signup)
+
 ✅ Video recommendations
+
 ✅ Cloud-based video storage
-📜 License
+
+## 📜 License
 This project is MIT Licensed.
 
+## Test commands - To remove container and start fresh
+```
 docker compose down -v
 docker compose up -d
+```
