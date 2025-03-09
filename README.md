@@ -99,6 +99,10 @@ use netflix
 db.videos.find().pretty()
 ```
 
+## Work In Progres
+1. NgInx setup with docker
+2. Upload API
+
 ## 🌟 Future Enhancements
 
 ✅ User authentication (Login/Signup)
