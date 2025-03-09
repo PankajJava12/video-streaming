@@ -13,6 +13,8 @@ A Dockerized Netflix-like video streaming application with React (Frontend), Nod
 
 ✅ NGINX as a Reverse Proxy for better performance (TODO: TBD)
 
+## Architecture Diagram
+
 ## 🛠️ Technologies Used
 
 - **Frontend**: React.js, HTML, CSS  
@@ -159,6 +161,9 @@ db.videos.find().pretty()
 
 ## 📜 License
 This project is MIT Licensed.
+
+## TODO
+ - Future Plan - https://github.com/PankajJava12/netflixlike/blob/main/futureplan.md
 
 ## Test commands - To remove container and start fresh
 ```
