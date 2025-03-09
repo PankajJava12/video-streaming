@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - netflix_network
+    volumes:
+      - mongo_data:/data/db
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro  # Initial script
+    environment:
+      MONGO_INITDB_DATABASE: netflix
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "5001:5000"
+    networks:
+      - netflix_network
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - netflix_network
+    depends_on:
+      - backend
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    networks:
+      - netflix_network
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+volumes:
+  mongo_data:
+
+networks:
+  netflix_network:
