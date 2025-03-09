@@ -163,7 +163,7 @@ db.videos.find().pretty()
 This project is MIT Licensed.
 
 ## TODO
- - Future Plan - https://github.com/PankajJava12/netflixlike/blob/main/futureplan.md
+ - Future Plan - https://github.com/PankajJava12/netflixlike/blob/main/SCALING_PLAN.md.md
 
 ## Test commands - To remove container and start fresh
 ```
