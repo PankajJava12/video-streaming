@@ -181,3 +181,11 @@ docker build -t netflixlike_frontend .
 and run it
 docker run --name netflixlike_frontend -p 8080:80 -d netflixlike_frontend
 ```
+# Made changes in frontend
+If you made changes to the frontend code, simply rebuild the nginx service:
+
+```
+docker-compose build nginx  # Rebuild only the nginx service
+docker-compose up -d nginx  # Restart only nginx container
+
+```
