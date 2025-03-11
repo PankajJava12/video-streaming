@@ -172,4 +172,12 @@ This project is MIT Licensed.
 ```
 docker compose down -v
 docker compose up -d
+
+Build Fresh
+docker compose build --no-cache
+
+Build the frontend separatly
+docker build -t netflixlike_frontend .
+and run it
+docker run --name netflixlike_frontend -p 8080:80 -d netflixlike_frontend
 ```
