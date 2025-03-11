@@ -24,29 +24,34 @@ services:
     depends_on:
       - mongo
 
-  # frontend:
-  #   build: ./frontend
-  #   container_name: frontend
-  #   # ports:
-  #   #   - "3000:3000"
-  #   networks:
-  #     - netflix_network
-  #   depends_on:
-  #     - backend
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    # ports:
+    #   - "3000:3000"
+    networks:
+      - netflix_network
+    volumes:
+      - frontend_build:/app/build  # Save build output here
+    depends_on:
+      - backend
 
   nginx:
     # image: nginx:latest
-    build: ./frontend
+    build: ./nginx
     container_name: nginx
     ports:
       - "8080:80"
     networks:
       - netflix_network
     volumes:
-      - ./frontend/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - frontend_build:/usr/share/nginx/html  # Serve built files from volume
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
     depends_on:
-      - backend
+      - frontend
+
 volumes:
+  frontend_build:
   mongo_data:
 
 networks:

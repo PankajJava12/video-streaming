@@ -11,7 +11,7 @@ const App = () => {
 
     return (
         <div>
-            <h1>Netflix Like Video streaming</h1>
+            <h1>Netflix Like Video streaming.</h1>
             {videos.map((video, index) => (
                 <div key={index}>
                     <h3>{video.title}</h3>
