@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5001";
 
 const App = () => {
     const [videos, setVideos] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5001/videos")
+        fetch(`${BACKEND_URL}/videos`)
             .then(res => res.json())
             .then(data => setVideos(data));
     }, []);
@@ -16,7 +17,7 @@ const App = () => {
                 <div key={index}>
                     <h3>{video.title}</h3>
                     <video width="640" height="360" controls>
-                        <source src={`http://localhost:5001/video/${encodeURIComponent(video.filename)}`} type="video/mp4" />
+                    <source src={`${BACKEND_URL}/video/${encodeURIComponent(video.filename)}`} type="video/mp4" />
                     </video>
                 </div>
             ))}
