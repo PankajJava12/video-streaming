@@ -1,0 +1,49 @@
+/* Netflix-like Dark Theme */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #e50914; /* Netflix Red */
+    margin-bottom: 20px;
+}
+
+/* Grid Layout */
+.video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Video Card */
+.video-card {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.video-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Video Player */
+.video-player {
+    width: 100%;
+    border-radius: 8px;
+}
