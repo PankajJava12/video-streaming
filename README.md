@@ -107,11 +107,9 @@ docker-compose up --build -d
 
 3️⃣ Open in Browser
 
-Frontend → http://localhost:3000
+Frontend → NGINX Proxy → http://localhost:8080
 
-Backend API → http://localhost:5001
-
-NGINX Proxy → http://localhost
+Backend API → http://localhost:5001/health
 
 
 
