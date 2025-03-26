@@ -112,7 +112,6 @@ Frontend → NGINX Proxy → http://localhost:8080
 Backend API → http://localhost:5001/health
 
 
-
 ## ⚙️ API Endpoints
 
 GET	/videos	Fetch all videos
