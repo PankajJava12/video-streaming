@@ -50,7 +50,7 @@ As the user base and video content grow, **scaling** becomes crucial for **perfo
 ## **3️⃣ Video Streaming & Storage Scaling**  
 
 ### 🔹 **Current Setup**  
-- Video files are stored **locally** or in **MongoDB GridFS**.  
+- Video files are stored **locally** ~~or in **MongoDB GridFS**~~.  
 - Streaming is handled via **Express API** (**limited scalability**).  
 
 ### 🔹 **Scaling Plan**  
@@ -59,7 +59,7 @@ As the user base and video content grow, **scaling** becomes crucial for **perfo
 - **Reduces backend server load** by offloading traffic.  
 
 ✅ **Move Video Storage to Cloud Storage (AWS S3, Google Cloud Storage, etc.)**  
-- **GridFS is not ideal** for large-scale storage.  
+- **Local storage is not ideal** for large-scale storage.  
 - Store videos in **S3-like object storage** & serve via **signed URLs**.  
 
 ✅ **Use HLS (HTTP Live Streaming) Instead of MP4 Direct Streaming**  
