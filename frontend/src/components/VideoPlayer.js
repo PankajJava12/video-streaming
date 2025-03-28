@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./VideoPlayer.css";
 
 const VideoPlayer = ({ title, src }) => {
@@ -6,12 +6,44 @@ const VideoPlayer = ({ title, src }) => {
     const [playing, setPlaying] = useState(false);
     const [likes, setLikes] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [seeking, setSeeking] = useState(false);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const updateProgress = () => {
+            if (!seeking) {
+                setProgress((video.currentTime / video.duration) * 100);
+            }
+        };
+
+        video.addEventListener("timeupdate", updateProgress);
+        return () => video.removeEventListener("timeupdate", updateProgress);
+    }, [seeking]);
+
+    // Seek bar interaction
+    const handleSeek = (e) => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const newTime = (e.target.value / 100) * video.duration;
+        video.currentTime = newTime;
+        setProgress(e.target.value);
+    };
+
+    // Handle seeking state
+    const handleSeekStart = () => setSeeking(true);
+    const handleSeekEnd = () => setSeeking(false);
 
     const togglePlay = () => {
-        debugger;
-        if (videoRef.current.paused) {
+        const video = videoRef.current;
+        if (video.paused) {
+            // video.play();
             setPlaying(true);
         } else {
+            // video.pause();
             setPlaying(false);
         }
     };
@@ -35,7 +67,21 @@ const VideoPlayer = ({ title, src }) => {
                     </div>
                 )}
             </div>
+            {/*             
+            Commenting the seek for now
+            <input
+                type="range"
+                className="progress-bar"
+                min="0"
+                max="100"
+                value={progress}
+                onMouseDown={handleSeekStart}
+                onChange={handleSeek}
+                onMouseUp={handleSeekEnd}
+                onTouchEnd={handleSeekEnd}
+            /> */}
             <button className="like-button" onClick={handleLike}>👍 {likes}</button>
+
         </div>
     );
 };
