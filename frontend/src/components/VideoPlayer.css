@@ -1,0 +1,43 @@
+.video-card {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.video-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.video-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.video-player {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 25px;
+    color: white;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.like-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}

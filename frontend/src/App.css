@@ -9,22 +9,23 @@ body {
 
 .container {
     text-align: center;
+    background-color: #121212;
+    color: white;
     padding: 20px;
+    min-height: 100vh;
 }
 
 .title {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
-    color: #e50914; /* Netflix Red */
-    margin-bottom: 20px;
+    color: red;
 }
 
-/* Grid Layout */
 .video-grid {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* Video Card */

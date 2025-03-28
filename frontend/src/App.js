@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./App.css"; // Import CSS file
+import VideoPlayer from "./components/VideoPlayer";
+import "./App.css";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5001";
 
@@ -17,12 +18,11 @@ const App = () => {
             <h1 className="title">🎬 Netflix-Like Video Streaming</h1>
             <div className="video-grid">
                 {videos.map((video, index) => (
-                    <div key={index} className="video-card">
-                        <h3 className="video-title">{video.title}</h3>
-                        <video className="video-player" controls>
-                            <source src={`${BACKEND_URL}/video/${encodeURIComponent(video.filename)}`} type="video/mp4" />
-                        </video>
-                    </div>
+                    <VideoPlayer 
+                        key={index} 
+                        title={video.title} 
+                        src={`${BACKEND_URL}/video/${encodeURIComponent(video.filename)}`} 
+                    />
                 ))}
             </div>
         </div>
