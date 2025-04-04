@@ -1,4 +1,4 @@
-db = db.getSiblingDB("netflix");
+db = db.getSiblingDB("vs");
 
 db.videos.insertMany([
     { "title" : "My Sample Video", "filename" : "sample_video_1.mp4", "description": "This is sample video 1" },

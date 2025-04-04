@@ -1,7 +1,7 @@
 {
-    "name": "netflix-backend",
+    "name": "vs-backend",
     "version": "1.0.0",
-    "description": "Backend for Netflix-like video streaming app",
+    "description": "Backend for vs-like video streaming app",
     "main": "server.js",
     "type": "module",
     "scripts": {

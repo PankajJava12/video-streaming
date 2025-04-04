@@ -15,7 +15,7 @@ const App = () => {
 
     return (
         <div className="container">
-            <h1 className="title">🎬 Netflix-Like Video Streaming</h1>
+            <h1 className="title">🎬 Video Streaming</h1>
             <div className="video-grid">
                 {videos.map((video, index) => (
                     <VideoPlayer 

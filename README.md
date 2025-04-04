@@ -1,5 +1,5 @@
-# 📺 Netflix-Like Video Streaming App
-A Dockerized Netflix-like video streaming application with React (Frontend), Node.js/Express (Backend), MongoDB (Database), and NGINX (Reverse Proxy).
+# 📺 Video Streaming App
+A Dockerized video streaming application with React (Frontend), Node.js/Express (Backend), MongoDB (Database), and NGINX (Reverse Proxy).
 
 ## 🚀 Features
 
@@ -29,7 +29,7 @@ A Dockerized Netflix-like video streaming application with React (Frontend), Nod
 
 ## 📂 Project Structure
 ```
-NetflixLike/
+VideoStreaming/
 │── backend/            # Express.js Backend API
 │   ├── server.js       # Main Backend Server
 │   ├── routes/         # API Routes (Videos)
@@ -96,8 +96,8 @@ The application follows a microservices-based approach (Since it is in intial ph
 ## ⚡ Quick Start
 1️⃣ Clone the Repository
 ```
-git clone https://github.com/yourusername/netflix-like.git
-cd netflix-like
+git clone https://github.com/yourusername/video-streaming.git
+cd video-streaming
 ```
 
 2️⃣ Start the Application
@@ -143,7 +143,7 @@ mongo --host localhost --port 27017
 
 Check Existing Data
 ```
-use netflix
+use vs
 db.videos.find().pretty()
 ```
 
@@ -163,7 +163,7 @@ db.videos.find().pretty()
 This project is MIT Licensed.
 
 ## TODO
- - Future Plan / Scaling / Performace Improvements  - https://github.com/PankajJava12/netflixlike/blob/main/SCALING_PLAN.md
+ - Future Plan / Scaling / Performace Improvements  - https://github.com/PankajJava12/video-streaming/blob/main/SCALING_PLAN.md
 
 ## Test commands - To remove container and start fresh
 ```
@@ -174,9 +174,9 @@ Build Fresh
 docker compose build --no-cache
 
 Build the frontend separatly
-docker build -t netflixlike_frontend .
+docker build -t vs_frontend .
 and run it
-docker run --name netflixlike_frontend -p 8080:80 -d netflixlike_frontend
+docker run --name vs_frontend -p 8080:80 -d vs_frontend
 ```
 # Made changes in frontend
 If you made changes to the frontend code, simply rebuild the nginx service:

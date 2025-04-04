@@ -7,12 +7,12 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - netflix_network
+      - vs_network
     volumes:
       - mongo_data:/data/db
       - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro  # Initial script
     environment:
-      MONGO_INITDB_DATABASE: netflix
+      MONGO_INITDB_DATABASE: vs
 
   backend:
     build: ./backend
@@ -20,7 +20,7 @@ services:
     ports:
       - "5001:5000"
     networks:
-      - netflix_network
+      - vs_network
     depends_on:
       - mongo
   
@@ -30,7 +30,7 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - netflix_network
+      - vs_network
 
   frontend:
     build: ./frontend
@@ -38,7 +38,7 @@ services:
     # ports:
     #   - "3000:3000"
     networks:
-      - netflix_network
+      - vs_network
     volumes:
       - frontend_build:/app/build  # Save build output here
     depends_on:
@@ -51,7 +51,7 @@ services:
     ports:
       - "8080:80"
     networks:
-      - netflix_network
+      - vs_network
     volumes:
       - frontend_build:/usr/share/nginx/html  # Serve built files from volume
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
@@ -63,4 +63,4 @@ volumes:
   mongo_data:
 
 networks:
-  netflix_network:
+  vs_network:

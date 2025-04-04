@@ -17,7 +17,7 @@ const __dirname = path.dirname(__filename);
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect("mongodb://mongo:27017/netflix", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://mongo:27017/vs", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const VideoSchema = new mongoose.Schema({ title: String, filename: String });
 const Video = mongoose.model("Video", VideoSchema);

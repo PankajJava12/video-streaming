@@ -1,4 +1,4 @@
-# 📈 Scaling Plan for Netflix-Like Video Streaming App 🚀  
+# 📈 Scaling Plan for Video Streaming App 🚀  
 
 As the user base and video content grow, **scaling** becomes crucial for **performance, reliability, and cost-effectiveness**. Below is a **scaling strategy** to handle increased load and traffic.  
 
