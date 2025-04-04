@@ -9,7 +9,7 @@ import { redisClient, isRedisConnected } from "./cache.js";
 import { cacheMiddleware } from "./middleware.js";
 
 const app = express();
-const PORT = 5002;
+const PORT = 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 

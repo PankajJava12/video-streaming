@@ -5,16 +5,21 @@ export const cacheMiddleware = async (req, res, next) => {
         console.log("⚠️ Redis not available. Skipping cache.");
         return next();
     }
-    
-    const key = req.originalUrl;
-    const cachedData = await redisClient.get(key);
 
-    if (cachedData) {
-        console.log("Cache Hit ✅");
-        return res.json(JSON.parse(cachedData));
+    try {
+        const key = req.originalUrl;
+        const cachedData = await redisClient.get(key);
+
+        if (cachedData) {
+            console.log("Cache Hit ✅");
+            return res.json(JSON.parse(cachedData));
+        }
+
+        console.log("Cache Miss ❌, will set data in cache now...");
+
+        next();
+    } catch (err) {
+        console.error("❌ Redis cache error:", error);
+        next();
     }
-
-    console.log("Cache Miss ❌, will set data in cache now...");
-
-    next();
 };

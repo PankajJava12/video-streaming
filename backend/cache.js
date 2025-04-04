@@ -7,7 +7,7 @@ async function connectRedis() {
     try {
         redisClient = redis.createClient({
             socket: {
-                host: "localhost",
+                host: "redis",
                 port: 6379
             }
         });
