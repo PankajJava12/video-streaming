@@ -1,11 +1,17 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const fs = require("fs");
-const path = require("path");
-const cors = require("cors");
+import express from "express";
+import mongoose from "mongoose";
+import fs from "fs";
+import { fileURLToPath } from "url";
+import path from "path";
+import cors from "cors";
+
+import { redisClient, isRedisConnected } from "./cache.js";
+import { cacheMiddleware } from "./middleware.js";
 
 const app = express();
-const PORT = 5000;
+const PORT = 5002;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Enable CORS
 app.use(cors());
@@ -23,13 +29,15 @@ app.post("/upload", async (req, res) => {
     const { title, filename } = req.body;
     const video = new Video({ title, filename });
     await video.save();
+    if (isRedisConnected) await redisClient.del("videoList");
     res.json({ message: "Video uploaded successfully" });
 });
 
 // 📌 API to Get All Videos
-app.get("/videos", async (req, res) => {
+app.get("/videos", cacheMiddleware, async (req, res) => {
     try {
         const videos = await Video.find();
+        if (isRedisConnected) await redisClient.setEx(req.originalUrl, 3600, JSON.stringify(videos)); // Cache for 1 hour
         res.json(videos);
     } catch (error) {
         res.status(500).json({ error: "Error fetching videos" });

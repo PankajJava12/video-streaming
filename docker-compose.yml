@@ -23,6 +23,12 @@ services:
       - netflix_network
     depends_on:
       - mongo
+  
+  redis:
+    image: redis
+    container_name: redis-server
+    ports:
+      - "6379:6379"
 
   frontend:
     build: ./frontend
