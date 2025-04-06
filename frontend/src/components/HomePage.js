@@ -5,6 +5,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:5001"
 
 const HomePage = () => {
     const [videos, setVideos] = useState([]);
+    const [errorMap, setErrorMap] = useState({});
 
     useEffect(() => {
         fetch(`${BACKEND_URL}/videos`)
@@ -21,7 +22,9 @@ const HomePage = () => {
                         key={index} 
                         title={video.title} 
                         src={`${BACKEND_URL}/video/${encodeURIComponent(video.filename)}`} 
-                    />
+                        onError={() => setErrorMap(prev => ({ ...prev, [index]: true }))}
+                        hasError={!!errorMap[index]}
+                        />
                 ))}
             </div>
         </div>

@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./VideoPlayer.css";
 
-const VideoPlayer = ({ title, src }) => {
+const VideoPlayer = ({ title, src, onError, hasError }) => {
     const videoRef = useRef(null);
     const [playing, setPlaying] = useState(false);
     const [likes, setLikes] = useState(0);
     const [isHovered, setIsHovered] = useState(false);
     const [progress, setProgress] = useState(0);
     const [seeking, setSeeking] = useState(false);
-    const [error, setError] = useState(false);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -53,21 +52,17 @@ const VideoPlayer = ({ title, src }) => {
         setLikes(likes + 1);
     };
 
-    const handleError = () => {
-        setError(true);
-    };
-
     return (
         <div className="video-card">
             <h3 className="video-title">{title}</h3>
-            {error ? (
+            {hasError ? (
                 <div className="video-error">
                     ❌ Failed to load video. Please try again later.
                 </div>
             ) : (<div className="video-container" onClick={togglePlay}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}>
-                <video ref={videoRef} className="video-player" controls onError={handleError}>
+                <video ref={videoRef} className="video-player" controls onError={onError}>
                     <source src={src} type="video/mp4" />
                 </video>
                 {isHovered && (
@@ -91,7 +86,7 @@ const VideoPlayer = ({ title, src }) => {
                 onMouseUp={handleSeekEnd}
                 onTouchEnd={handleSeekEnd}
             /> */}
-            {!error &&
+            {!hasError &&
                 <button className="like-button" onClick={handleLike}>👍 {likes}</button>
             }
 

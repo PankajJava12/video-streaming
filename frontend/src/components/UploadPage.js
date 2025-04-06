@@ -32,6 +32,7 @@ const UploadPage = () => {
 
         const formData = new FormData();
         formData.append("video", file);
+        formData.append("title", title); // Add title to form data
 
         const xhr = new XMLHttpRequest();
         xhr.open("POST", `${BACKEND_URL}/upload`, true);
