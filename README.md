@@ -15,8 +15,7 @@ A Dockerized video streaming application with React (Frontend), Node.js/Express 
 
 ## Architecture Diagram
 
-![image](https://github.com/user-attachments/assets/701680b5-8024-4f90-b29e-6e8f23d6933e)
-
+![Video Streaming](https://github.com/user-attachments/assets/2f4c182a-b5a3-45e9-9100-d4215c69785c)
 
 ## 🛠️ Technologies Used
 
