@@ -1,4 +1,31 @@
 /* Video Streaming Dark Theme */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px;
+    background-color: #141414;
+    border-bottom: 2px solid #333;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding-bottom: 4px;
+}
+
+.menu a:hover {
+    color: #fff;
+}
+
+.menu .active {
+    border-bottom: 2px solid #00d4ff;
+    color: #00d4ff;
+}
+
 body {
     background-color: #121212;
     color: #ffffff;

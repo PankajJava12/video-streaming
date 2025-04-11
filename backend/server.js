@@ -4,6 +4,7 @@ import fs from "fs";
 import { fileURLToPath } from "url";
 import path from "path";
 import cors from "cors";
+import multer from "multer";
 
 import { redisClient, isRedisConnected } from "./cache.js";
 import { cacheMiddleware } from "./middleware.js";
@@ -17,19 +18,40 @@ const __dirname = path.dirname(__filename);
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect("mongodb://mongo:27017/vs", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/vs", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const VideoSchema = new mongoose.Schema({ title: String, filename: String });
 const Video = mongoose.model("Video", VideoSchema);
 
 app.use(express.json());
 
+// Multer config
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const uploadPath = path.join(__dirname, "videos");
+        if (!fs.existsSync(uploadPath)) fs.mkdirSync(uploadPath);
+        cb(null, uploadPath);
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    },
+});
+
+const upload = multer({ storage });
+
 // Upload Video Metadata
-app.post("/upload", async (req, res) => {
-    const { title, filename } = req.body;
-    const video = new Video({ title, filename });
+app.post("/upload", upload.single("video"), async (req, res) => {
+    const { title } = req.body;
+
+    if (!title || !req.file) {
+        return res.status(400).json({ error: "Missing title or video file" });
+    }
+
+    const video = new Video({ title, filename: req.file.filename });
     await video.save();
+
     if (isRedisConnected) await redisClient.del("videoList");
+
     res.json({ message: "Video uploaded successfully" });
 });
 

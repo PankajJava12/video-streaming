@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./VideoPlayer.css";
 
-const VideoPlayer = ({ title, src }) => {
+const VideoPlayer = ({ title, src, onError, hasError }) => {
     const videoRef = useRef(null);
     const [playing, setPlaying] = useState(false);
     const [likes, setLikes] = useState(0);
@@ -55,10 +55,14 @@ const VideoPlayer = ({ title, src }) => {
     return (
         <div className="video-card">
             <h3 className="video-title">{title}</h3>
-            <div className="video-container" onClick={togglePlay}
+            {hasError ? (
+                <div className="video-error">
+                    ❌ Failed to load video. Please try again later.
+                </div>
+            ) : (<div className="video-container" onClick={togglePlay}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}>
-                <video ref={videoRef} className="video-player" controls>
+                <video ref={videoRef} className="video-player" controls onError={onError}>
                     <source src={src} type="video/mp4" />
                 </video>
                 {isHovered && (
@@ -66,7 +70,9 @@ const VideoPlayer = ({ title, src }) => {
                         {playing ? "⏸" : "▶"}
                     </div>
                 )}
-            </div>
+            </div>)}
+
+
             {/*             
             Commenting the seek for now
             <input
@@ -80,7 +86,9 @@ const VideoPlayer = ({ title, src }) => {
                 onMouseUp={handleSeekEnd}
                 onTouchEnd={handleSeekEnd}
             /> */}
-            <button className="like-button" onClick={handleLike}>👍 {likes}</button>
+            {!hasError &&
+                <button className="like-button" onClick={handleLike}>👍 {likes}</button>
+            }
 
         </div>
     );
